@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-
+from .models import Contato    
 def index(request):
-    empresa = 'Morpheus Corp'
+    lista = Contato.objects.all()
+    print(lista)
     context = {
-        'empresa': empresa
+    'lista': lista
     }
 
     return render(request, "index.html", context)

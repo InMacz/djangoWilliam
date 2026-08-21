@@ -13,6 +13,18 @@
     <h1>Agenda Django</h1>
 
     <button onclick="CliqueAqui();">Clique Aqui</button>
-    <h3>Trademark: {{empresa}}</h3>
+   
+
+    <p></p>
+    Agenda de Contatos
+    <table border="1">
+        {% for pessoa in lista%}
+        <tr>
+            <td>{{pessoa.Nome}}</td>
+            <td>{{pessoa.Email}}</td>
+           
+        </tr>
+        {%endfor%}
+    </table>
 </body>
 </html>
