@@ -20,7 +20,7 @@
     <table border="1">
         {% for pessoa in lista%}
         <tr>
-            <td><a href="">{{pessoa.Nome}}</a></td>
+            <td><a href="{% url 'consContato' pessoa.id %}">{{pessoa.Nome}}</a></td>
             <td>{{pessoa.Email}}</td>
            
         </tr>
