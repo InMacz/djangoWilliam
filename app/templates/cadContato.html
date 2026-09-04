@@ -1,0 +1,30 @@
+{% load django_bootstrap5 %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Conversantes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container"></div>
+    <h1>Cadastro de Conversantes</h1>
+    <form action="{% url 'cadContato' %}" method="POST" 
+                            autocomplete="off" class="form">
+    {% csrf_token %}
+
+    {% bootstrap_form form %}
+    {{ form }}
+
+    
+    <button type="submit" id="btnSalvar" class="btn-primary">SALVAR</button>
+    
+    </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

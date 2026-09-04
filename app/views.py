@@ -18,23 +18,26 @@ def consContato(request, pk):
     }
     return render(request, "consContato.html", context)
 
-    def cadContato(request):
+def cadContato(request):
 
-        if request.method == 'POST':
-            form = ContatoModelForm(request.POST)
+    if request.method == 'POST':
+        form = ContatoModelForm(request.POST)
 
-            if form.is_valid():
-                contato = form.save(commit=False)
-                print(f"Nome: {contato.Nome}")
-                print(f"Email: {contato.Email}")
-                print(f"Data de Nascimento: {contato.DtaNas}")
+        if form.is_valid():
+            contato = form.save(commit=False)
 
-                messages.success(request, 'Contato cadastrado com sucesso!')
-            else:
-                messages.error(request, "Erro ao cadastrar contato")
+            print(f"Nome: {contato.Nome}")
+            print(f"Email: {contato.Email}")
+            print(f"Data de Nascimento: {contato.DtaNas}")
 
-                context = {
-                    'form': form
-                }
+            messages.success(request, 'Contato cadastrado com sucesso!')
+        else:
+            messages.error(request, "Erro ao cadastrar contato")
+    else:
+        form = ContatoModelForm()
 
-                return render(request, 'cadContato.html', context)
+    context = {
+        'form': form
+    }
+
+    return render(request, 'cadContato.html', context)
