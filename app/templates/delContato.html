@@ -1,0 +1,25 @@
+{% load django_bootstrap5 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exclusão de Contato</title>
+    {% bootstrap_css %}
+</head>
+<body>
+    <div class="container">
+        <form action="{% url 'delContato' contato.id %}" method="POST" >
+            {% csrf_token %}
+            <h2>Confirma Exclusão? Esse processo é irreversível</h2>
+            <div class="Caixa">
+                Nome: {{contato.Nome}}<br>
+                Email: {{contato.Email}}<br>
+                Data de Nascimento {{contato.DtaNas}}<br>
+            </div>
+            <p></p>
+            <input type="submit" class="btn btn-danger" value="Cancelar">
+        </form>
+    </div>
+</body>
+</html>

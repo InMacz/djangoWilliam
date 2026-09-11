@@ -41,3 +41,37 @@ def cadContato(request):
     }
 
     return render(request, 'cadContato.html', context)
+
+def altContato(request, pk):
+    contato = Contato.objects.get(id=pk)
+
+    if request.method == 'POST':
+        form = ContatoModelForm(
+            request.POST,
+            request.FILES,
+            instance=contato
+        )
+
+        if form.is_valid():
+            form.save()
+            return redirect("/")
+
+    else:
+        form = ContatoModelForm(instance=contato)
+
+    context = {
+        "form": form,
+        "cont": contato
+    }
+
+    return render(request, "altContato.html", context)
+
+def delContato(request, pk):
+    contato = Contato.objects.get(id=pk)
+    if request.method=="POST":
+        contato.delete()
+        return redirect("/")
+    context = {
+        "contato": contato
+    }
+    return render(request, "delContato.html", context)

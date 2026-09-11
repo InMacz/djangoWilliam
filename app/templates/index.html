@@ -23,6 +23,10 @@
             <td><a href="{% url 'consContato' pessoa.id %}">{{pessoa.Nome}}</a></td>
             <td>{{pessoa.Email}}</td>
            
+            <td>
+                <a href="{% url 'altContato' pessoa.id %}" class="">Alterar</a>
+                <a href="{% url 'delContato' pessoa.id %}" class="">Excluir</a>
+            </td>
         </tr>
         {%endfor%}
     </table>
